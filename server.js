@@ -26,7 +26,7 @@ app.set('port',port);
 //llamando a las rutas
 servicecampaigns(app);
 
-server.listen(3000,'localhost', function(){
+server.listen(port, function(){
     console.log('Aplicacion de NodeJS ' + process.pid + ' iniciada')
 
 });
