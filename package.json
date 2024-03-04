@@ -1,0 +1,25 @@
+{
+  "name": "flutter-project-scan-vin",
+  "version": "1.0.0",
+  "description": "Backend scan vin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "flutter",
+    "vin",
+    "scan",
+    "nodejs"
+  ],
+  "author": "Tong",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "morgan": "^1.10.0",
+    "pg-promise": "^11.5.4"
+  }
+}
