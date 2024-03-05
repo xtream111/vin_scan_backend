@@ -2,7 +2,7 @@
 const promise = require('bluebird');
 const { parse } = require('pg-connection-string');
 
-//const databaseUrl = 'postgres://vin_check_5iou_user:i2DnWeQeA6mT2exggmNqje0P9tg2gIWa@dpg-cnj3l4en7f5s73b2b8qg-a.frankfurt-postgres.render.com/vin_check_5iou';
+
 //internal url
 const databaseUrl = process.env.databaseUrl;
 const dbConfigFromUrl = parse(databaseUrl);
