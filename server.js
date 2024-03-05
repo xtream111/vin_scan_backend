@@ -27,7 +27,7 @@ app.set('port',port);
 servicecampaigns(app);
 
 server.listen(port, function(){
-    console.log('Aplicacion de NodeJS ' + process.pid + ' iniciada')
+    console.log('Aplicacion de NodeJS ' + port + ' iniciada')
 
 });
 
