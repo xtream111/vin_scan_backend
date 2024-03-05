@@ -4,6 +4,9 @@ const http = require('http');
 const server = http.createServer(app);
 const logger = require('morgan');
 const cors = require('cors');
+require('dotenv').config();
+
+console.log(process.env);
 
 /*
 *Rutas
