@@ -25,7 +25,7 @@ const databaseConfig = {
     database: dbConfigFromUrl.database,
     user: dbConfigFromUrl.user,
     password: dbConfigFromUrl.password,
-    ssl: true
+    //ssl: true
 };
 
 /*const databaseConfig = {
