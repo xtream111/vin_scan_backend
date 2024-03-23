@@ -32,6 +32,14 @@ db_query.update_completion = (vin, campaignid) => {
     return db.manyOrNone(sql,[vin,campaignid]);
 }
 
+db_query.update_warranty_completion = (vin, campaignid) => {
+    const sql = `UPDATE vehiclecampaigns
+    SET warranty_completion = NOT warranty_completion,
+    completed_at = CURRENT_DATE
+    WHERE VIN = $1 AND CampaignID = $2`;
+    return db.manyOrNone(sql,[vin,campaignid]);
+}
+
 
 
 module.exports = db_query;
