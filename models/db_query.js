@@ -14,7 +14,8 @@ db_query.VINcampaigncheck = (vin) => {
 	vehiclecampaigns.VIN,
     ServiceCampaigns.CampaignID,
     ServiceCampaigns.CampaignName,
-	vehiclecampaigns.completed
+	vehiclecampaigns.completed,
+    vehiclecampaigns.warranty_completion
 FROM
     vehiclecampaigns
 JOIN
