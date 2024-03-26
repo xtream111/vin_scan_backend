@@ -41,6 +41,19 @@ db_query.update_warranty_completion = (vin, campaignid) => {
     return db.manyOrNone(sql,[vin,campaignid]);
 }
 
+db_query.getTotalAffectedVehicles = (campaignid) => {
+    const sql = `SELECT campaignid, campaignname, totalaffectedvehicles 
+    FROM servicecampaigns
+    WHERE CampaignID = $1`;
+    return db.manyOrNone(sql,[campaignid]);
+}
+
+db_query.getCompletionNumber = (campaignid) => { //get completion number by campaignid
+    const sql = `SELECT 
+    (SELECT COUNT(*) FROM vehiclecampaigns WHERE completed = TRUE and campaignid = $1)`;
+    return db.manyOrNone(sql,[campaignid]);
+}
+
 
 
 module.exports = db_query;

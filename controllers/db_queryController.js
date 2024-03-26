@@ -99,6 +99,46 @@ async VINcampaigncheck(req, res, next) {
         message: 'Error al obtener los resultados de completion',
       });
     }
+  },
+
+  async getTotalAffectedVehicles (req, res, next) {
+    try {
+      const {campaignid } = req.query;
+  
+      if (!campaignid) {
+        return res.status(400).json({ error: 'Campaign ID is required' });
+      }
+  
+      const data = await db_query.getTotalAffectedVehicles(campaignid);
+      console.log(`aa: ${data}`);
+      return res.status(201).json(data);
+    } catch (error) {
+      console.error(`Error: ${error}`);
+      return res.status(501).json({
+        success: false,
+        message: 'Error al obtener los resultados de numero de vehiculos afectados',
+      });
+    }
+  },
+
+  async getCompletionNumber (req, res, next) {
+    try {
+      const {campaignid } = req.query;
+  
+      if (!campaignid) {
+        return res.status(400).json({ error: 'Campaign ID is required' });
+      }
+  
+      const data = await db_query.getCompletionNumber(campaignid);
+      console.log(`aa: ${data}`);
+      return res.status(201).json(data);
+    } catch (error) {
+      console.error(`Error: ${error}`);
+      return res.status(501).json({
+        success: false,
+        message: 'Error al obtener los resultados de numero de vehiculos terminados',
+      });
+    }
   }
 
 
