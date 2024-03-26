@@ -7,7 +7,7 @@ module.exports = (app) => {
     app.put('/api/Servicecampaigns/update_completion', (req, res, next) => db_query.update_completion(req, res, next));
     app.put('/api/Servicecampaigns/update_warranty_completion', (req, res, next) => db_query.update_warranty_completion(req, res, next));
     app.get('/api/Servicecampaigns/getAffectedVehicles', (req, res, next) => db_query.getTotalAffectedVehicles(req, res, next));
-    app.get('/api/Servicecampaigns/getCompletionNumber', (req, res, next) => db_query.getCompletionNumber(req, res, next));
+    app.get('/api/Servicecampaigns/getCompletionData', db_query.getCompletionData);
 
 
     

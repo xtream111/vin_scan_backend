@@ -48,10 +48,35 @@ db_query.getTotalAffectedVehicles = (campaignid) => {
     return db.manyOrNone(sql,[campaignid]);
 }
 
-db_query.getCompletionNumber = (campaignid) => { //get completion number by campaignid
-    const sql = `SELECT 
-    (SELECT COUNT(*) FROM vehiclecampaigns WHERE completed = TRUE and campaignid = $1)`;
-    return db.manyOrNone(sql,[campaignid]);
+
+
+db_query.getCompletionData = () => {
+    const sql = `
+    SELECT
+    sc.campaignid,
+    sc.campaignname,
+    sc.totalaffectedvehicles,
+    COALESCE(vc.total_completed_vehicles, 0) AS total_completed,
+    CASE
+        WHEN sc.totalaffectedvehicles > 0 THEN ROUND((COALESCE(vc.total_completed_vehicles, 0) * 100.0) / sc.totalaffectedvehicles, 2)
+        ELSE 0.00
+    END AS completion_rate
+FROM
+    servicecampaigns AS sc
+LEFT JOIN
+    (
+        SELECT
+            campaignid,
+            COUNT(*) AS total_completed_vehicles
+        FROM
+            vehiclecampaigns
+        WHERE
+            completed = TRUE
+        GROUP BY
+            campaignid
+    ) AS vc ON sc.campaignid = vc.campaignid;`;
+
+    return db.manyOrNone(sql);
 }
 
 
